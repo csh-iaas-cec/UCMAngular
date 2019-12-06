@@ -1,0 +1,132 @@
+<div class="utcontainer" style="display:flex; flex-direction:column; padding: 0 0 0 4%;">
+  <h2>Update Tenancy</h2>
+
+  <div style="display: flex; flex-direction: row; margin: 0 0 2%;">
+    <div class="inputA">
+      <span style="font-weight:bold;">Tenancy Name :</span>
+    </div>
+    <div class="inputB">
+      <mat-select placeholder="Select Tenancy" required [(value)]="selected" (selectionChange)="selectedTenancy($event)">
+        <mat-option *ngFor="let food of tenancy" [value]="food.tenancy_name">
+          {{food.tenancy_name}}
+        </mat-option>
+      </mat-select>
+    </div>
+  </div>
+
+  <div style="display: flex; flex-direction: row; margin: 0 0 2%;">
+    <div class="inputA">
+      <span style="font-weight:bold;">Tenancy ID :</span>
+    </div>
+    <div class="inputB">
+      <input matInput placeholder="" [(ngModel)]="Tenancy_id" disabled>
+      <button (click)="copyContents(Tenancy_id)" class="copybutton">
+        <mat-icon>file_copy</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <div style="display: flex; flex-direction: row; margin: 0 0 2%;">
+    <div class="inputA">
+      <span style="font-weight:bold;">Business Owner :</span>
+    </div>
+    <div class="inputB">
+      <input matInput [(ngModel)]="bo_name" placeholder="" [(value)]="bo_name">
+    </div>
+  </div>
+
+  <div style="display: flex; flex-direction: row; margin: 0 0 2%;">
+    <div class="inputA">
+      <span style="font-weight:bold;">Business Owner Email :</span>
+    </div>
+    <div class="inputB">
+      <input type="email"  placeholder=" " [(ngModel)]="bo_email" >
+      
+
+    </div>
+  </div>
+
+  <div style="display: flex; flex-direction: row; margin: 0 0 2%;">
+    <div class="inputA">
+      <span style="font-weight:bold;">Admin User ID :</span>
+    </div>
+    <div class="inputB">
+      <input matInput placeholder=" " [(ngModel)]="admin_uid" disabled>
+      <button (click)="copyContents(admin_uid)" class="copybutton">
+        <mat-icon>file_copy</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <div style="display: flex; flex-direction: row; margin: 0 0 2%;">
+    <div class="inputA">
+      <span style="font-weight:bold;">Tenancy Owner :</span>
+    </div>
+    <div class="inputB">
+      <input matInput placeholder="" [(ngModel)]="Tenancy_owner">
+    </div>
+  </div>
+
+  <div style="display: flex; flex-direction: row; margin: 0 0 2%;">
+    <div class="inputA">
+      <span style="font-weight:bold;">Tenancy Owner Email :</span>
+    </div>
+    <div class="inputB">
+      <input matInput type="email" placeholder=" " [(ngModel)]="Tenancy_owner_email">
+    </div>
+  </div>
+
+  <div style="display: flex; flex-direction: row; margin: 0 0 2%;">
+    <div class="inputA">
+      <span style="font-weight:bold;">Home Region :</span>
+    </div>
+    <div class="inputB">
+      <input matInput placeholder="" [(ngModel)]="Home_region" disabled>
+    </div>
+  </div>
+
+  <div style="display: flex; flex-direction: row; margin: 0 0 2%;">
+    <div class="inputA">
+      <span style="font-weight:bold;">Credit Limit :</span>
+    </div>
+    <div class="inputB">
+      <input matInput placeholder=" " [(ngModel)]="Credit_limit" disabled>
+    </div>
+  </div>
+<!-- 
+  <div style="display: flex; flex-direction: row; margin: 0 0 2%;">
+    <div class="inputA">
+      <span style="font-weight:bold;">Status :</span>
+    </div>
+    <div class="inputB">
+      <mat-select [(ngModel)]="tstatus" required>
+        <mat-option value="active">Active</mat-option>
+        <mat-option value="inactive">Inactive</mat-option>
+      </mat-select>
+    </div>
+  </div> -->
+
+  <div style="display: flex; flex-direction: row; margin: 0 0 2%;">
+    <div class="inputA">
+
+      <mat-checkbox (click)="enable()" [(ngModel)]="statuschecked"></mat-checkbox>
+      <span style="padding: 3px 0 0 9px;  font-weight:bold; color: lightgray; " id="statustextid">Status :</span>
+    </div>
+    <div class="inputB">
+      <mat-select placeholder="Select status" [(ngModel)]="tstatus"required [disabled]="getDisabledValue()">
+        <mat-option value="Active">Active</mat-option>
+        <mat-option value="Inactive">Inactive</mat-option>
+        <!--<mat-option value="Inactive >Inactive</mat-option>-->
+      </mat-select>
+    </div>
+  </div>
+
+  <div style="display: flex; flex-direction: row; margin: 0 0 2%;">
+    <div class="inputA">
+    </div>
+    <div style="flex: 7">
+      <button (click)="Utonclick()" mat-button>UPDATE TENANCY</button>
+    </div>
+  </div>
+
+</div>

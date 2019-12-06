@@ -1,0 +1,21 @@
+<div>
+<mat-sidenav-container class="example-container"  >
+  <mat-sidenav #drawer mode="side" opened role="navigation">
+    <mat-nav-list>
+      <h4>Select Pillar</h4>
+      <a mat-list-item  [routerLink]="[{ outlets: { outlet1: ['iassAsset'] } }]" skipLocationChange>	<mat-icon>settings</mat-icon> All assets</a>
+
+      <a mat-list-item [routerLink]="[{ outlets: { outlet1: ['iassAsset'] } }]" skipLocationChange>  	<mat-icon>settings</mat-icon> Iaas assets</a>
+      <a mat-list-item [routerLink]="[{ outlets: { outlet1: ['PassAsset'] } }]" skipLocationChange>	<mat-icon>settings</mat-icon> Paas Assets</a>
+      <a mat-list-item [routerLink]="[{ outlets: { outlet1: ['PassAsset'] } }]" skipLocationChange>	<mat-icon>settings</mat-icon> Saas Assets</a>
+
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content class="mainContent">
+
+    <router-outlet name="outlet1"></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+</div>
+  

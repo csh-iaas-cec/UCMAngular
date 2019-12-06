@@ -1,0 +1,22 @@
+<div class="adminC">
+  <mat-sidenav-container class="example-container-admin"  >
+    <mat-sidenav #drawer mode="side" opened role="navigation">
+      <mat-nav-list>
+        <h4></h4>
+        <a mat-list-item  [routerLink]="[{ outlets: { outlet2: ['Addtenancy'] } }]" skipLocationChange>	<mat-icon>add</mat-icon> Add Tenancy</a>
+        <a mat-list-item  [routerLink]="[{ outlets: { outlet2: ['Updatetenancy'] } }]" skipLocationChange>	<mat-icon>update</mat-icon> Update Tenancy</a>
+        <a mat-list-item [routerLink]="[{ outlets: { outlet2: ['Addproduct'] } }]" skipLocationChange>	<mat-icon>add</mat-icon> Add Product</a>
+        
+  
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content class="mainContent-admin">
+  
+      <router-outlet name="outlet2"></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  
+  </div>
+  
+    
+    
