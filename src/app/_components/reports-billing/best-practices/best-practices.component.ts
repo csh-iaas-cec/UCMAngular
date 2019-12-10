@@ -127,6 +127,7 @@ export class BestPracticesComponent implements AfterViewInit {
     this.matTressNetworkisActive = false;
     this.matTressIAMActive = true;
     this.matTressComputeActive = false;
+    console.log(this.paginator);
   }
 
   open_iam_reports(data) {
@@ -140,6 +141,7 @@ export class BestPracticesComponent implements AfterViewInit {
     this.dataSource = new MatTableDataSource<InterfaceNetwork>(data);
     this.dataSource.paginator = this.paginator;
     console.log(this.paginator);
+    console.log(data)
 
   }
 

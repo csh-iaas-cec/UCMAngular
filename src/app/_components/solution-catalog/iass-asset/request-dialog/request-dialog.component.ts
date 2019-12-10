@@ -2,10 +2,8 @@ import { Component, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CloudPortalService } from '../../../../_services/cloud-portal.service';
-import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { toDate } from '@angular/common/src/i18n/format_date';
-import {MatFileUploadModule} from 'angular-material-fileupload';
+// import {MatFileUploadModule} from 'angular-material-fileupload';
 
 export interface DialogData {
   Instancename: any;
@@ -86,7 +84,9 @@ export class RequestDialogComponent {
     public dialogRef: MatDialogRef<RequestDialogComponent>,
     private cloudPortalService: CloudPortalService, private snackBar: MatSnackBar,
     @Inject(MAT_DIALOG_DATA) public data: DialogData, public dialog: MatDialog,
-    private spinner: NgxSpinnerService, public MatFileUploadModule: MatFileUploadModule ) {
+    // private spinner: NgxSpinnerService, public MatFileUploadModule: MatFileUploadModule ) {
+      private spinner: NgxSpinnerService ) {
+
     this.finalResponse = 'failure';
     this.instanceName = data.Instancename;
     this.pageTitle = data.pageTitle;

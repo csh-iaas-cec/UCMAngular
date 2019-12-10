@@ -34,7 +34,7 @@ import { RequestPeoplesoftComponent } from './_components/solution-catalog/iass-
 import { RequestSeibelComponent } from './_components/solution-catalog/iass-asset/request-seibel/request-seibel.component';
 import { RequestUbuntuComponent } from './_components/solution-catalog/iass-asset/request-ubuntu/request-ubuntu.component';
 import { RequestWindowsComponent } from './_components/solution-catalog/iass-asset/request-windows/request-windows.component';
-import { MatFileUploadModule } from 'angular-material-fileupload';
+// import { MatFileUploadModule } from 'angular-material-fileupload';
 
 
 
@@ -82,8 +82,7 @@ import { MatFileUploadModule } from 'angular-material-fileupload';
     FormsModule,
     ReactiveFormsModule,
     MatInputModule,
-    HttpClientModule,
-    MatFileUploadModule
+    HttpClientModule
    
     
   ],

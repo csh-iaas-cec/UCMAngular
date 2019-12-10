@@ -131,18 +131,18 @@
         <div class="linedText">
             <h2><span> Upload SSH key </span></h2>
           </div>
-          <div [fileUploadInputFor]="fileUploadQueue" class="upload-drop-zone">
+          <!-- <div [fileUploadInputFor]="fileUploadQueue" class="upload-drop-zone">
               Just drag and drop files here
-          </div>
+          </div> -->
            
            
           <div style="width: 500px">
-              <mat-file-upload-queue #fileUploadQueue
+              <!-- <mat-file-upload-queue #fileUploadQueue
                   [fileAlias]="'file'"
                   [httpUrl]="httpURL" >
               
                   <mat-file-upload [file]="file" [id]="i" *ngFor="let file of fileUploadQueue.files; let i = index"></mat-file-upload>
-              </mat-file-upload-queue>
+              </mat-file-upload-queue> -->
           </div>
     </div>
     <div mat-dialog-actions>

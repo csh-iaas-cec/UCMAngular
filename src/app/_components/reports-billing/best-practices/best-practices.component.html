@@ -118,7 +118,7 @@
   <mat-accordion>
     <div *ngFor="let data of network_data | keyvalue">
       <div class="dataTable">
-        <mat-expansion-panel (opened)="open_network_reports(data.value)" (closed)="open_network_reports('')">
+        <mat-expansion-panel (opened)="open_network_reports(data.value)">
           <mat-expansion-panel-header>
             <mat-panel-title>
               {{data.key}}
@@ -156,13 +156,14 @@
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
           </table>
-          <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
 
         </mat-expansion-panel>
         
 
       </div>
     </div>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+
   </mat-accordion>
 </div>
 
@@ -194,11 +195,11 @@
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
           </table>
-          <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
 
         </mat-expansion-panel>
       </div>
     </div>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
     
   </mat-accordion>
 
@@ -247,11 +248,12 @@
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
           </table>
-          <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
 
         </mat-expansion-panel>
       </div>
     </div>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+
   </mat-accordion>
 
 
