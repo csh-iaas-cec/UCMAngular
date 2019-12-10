@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { CloudPortalService } from '../../../_services/cloud-portal.service';
-import { MatDialog, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from '../../solution-catalog/iass-asset/confirm-dialog/confirm-dialog.component'
 
 @Component({

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog, MatDialogRef, MatDialogConfig, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialog, MatDialogRef, MatDialogConfig, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { RouterModule, Router, ActivatedRoute } from '@angular/router';
 import { ImagefilterPipePipe } from '../../../_helpers/imagefilter-pipe.pipe';
 
