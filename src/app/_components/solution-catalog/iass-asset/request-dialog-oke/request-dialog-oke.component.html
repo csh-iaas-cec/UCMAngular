@@ -1,0 +1,97 @@
+<div *ngIf="confirmed">
+  <mat-toolbar class = "containerHeader">{{data.pageTitle}}</mat-toolbar>
+  <mat-dialog-content class="mat-typography">
+      
+
+  <div class="example-container">
+      <div class="textMain">
+
+          The solution provides a preconfigured, fully managed Kubernetes cluster on OCI.
+        </div>
+        <div class="linedText">
+          <h2><span> Mandatory input</span></h2>
+      
+        </div>
+      <mat-form-field>
+          <mat-select placeholder = "Region" [(ngModel)]="region" >
+              <mat-option value="us-ashburn-1">Ashburn</mat-option>
+              <mat-option value="us-phoenix-1">Phoenix</mat-option>
+              <mat-option value="uk-london-1">London</mat-option>
+              <mat-option value="eu-frankfurt-1">Frankfurt</mat-option>
+            </mat-select>
+      </mat-form-field>
+    
+      <mat-form-field>
+        <mat-select placeholder = "AD" [(ngModel)]="AD" >
+          <mat-option value="1">1</mat-option>
+          <mat-option value="2">2</mat-option>
+          <mat-option value="3">3</mat-option>
+        </mat-select>
+      </mat-form-field>
+    
+      <mat-form-field >
+          <mat-select placeholder = "Shape Name" [(ngModel)]="shape" >
+              <mat-option value="VM.Standard1.1">VM.Standard1.1</mat-option>
+              <mat-option value="VM.Standard1.2">VM.Standard1.2</mat-option>
+              <mat-option value="VM.Standard2.1">VM.Standard2.1</mat-option>
+              <mat-option value="VM.Standard2.2">"VM.Standard2.2</mat-option>
+              <mat-option value="VM.Standard2.4">VM.Standard2.4</mat-option>
+              <mat-option value="VM.Standard.E2.1">VM.Standard.E2.1</mat-option>
+              <mat-option value="VM.Standard.E2.2">VM.Standard.E2.2</mat-option>
+          </mat-select>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+          <input matInput placeholder="Cluster Name">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="Node Pool Name Prefix">
+          </mat-form-field>
+
+          <mat-form-field>
+              <mat-select placeholder = "Node Pool Image Name" [(ngModel)]="nodepoolimagename" >
+                  <mat-option value="Oracle-Linux-7.5">Oracle-Linux-7.5</mat-option>
+                  <mat-option value="Oracle-Linux-7.2">Oracle-Linux-7.2</mat-option>
+                  <mat-option value="Oracle-Linux-6.5">Oracle-Linux-6.5</mat-option>
+              </mat-select>
+              </mat-form-field>
+
+
+              <mat-form-field>
+                  <mat-select placeholder = "Node Pool Quantity Per Subnet" [(ngModel)]="nodepoolquantitypersubnet" >
+                      <mat-option value="1">1</mat-option>
+                      <mat-option value="2">2</mat-option>
+                      <mat-option value="3">3</mat-option>
+                  </mat-select>
+                  </mat-form-field>
+
+
+                  <mat-form-field>
+                      <mat-select placeholder = "Node Pools" [(ngModel)]="nodepools" >
+                          <mat-option value="0">0</mat-option>  
+                        <mat-option value="1">1</mat-option>
+                          <mat-option value="2">2</mat-option>
+                          <mat-option value="3">3</mat-option>
+                          <mat-option value="4">4</mat-option>
+                      </mat-select>
+                      </mat-form-field>
+
+
+
+  
+      <div mat-dialog-actions>
+        <button mat-button (click)="onNoClick('No')">Cancel</button>
+        <button mat-raised-button  (click)="onYesClick()">Run Script</button>
+      </div>
+    </div>
+    </mat-dialog-content>
+</div>
+
+<div *ngIf="confirmationDialog" class="example-container">
+Confiirmation goes here
+
+<div mat-dialog-actions >
+  <button mat-button (click)="onNoClick('No')">Cancel</button>
+  <button mat-raised-button  (click)="runscripts()">Confirm</button>
+</div>
+</div>

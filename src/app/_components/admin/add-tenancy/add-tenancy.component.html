@@ -1,0 +1,109 @@
+<div class="atcontainer" style="display:flex; flex-direction:column; padding: 0 0 0 4%;">
+  <h2>Add Tenancy</h2>
+
+  <div style="display: flex; flex-direction: row; margin: 0 0 2%;">
+    <div class="inputA">
+      <span style="font-weight:bold;;font-weight:bold">Tenancy ID :</span>
+    </div>
+    <div class="inputB">
+      <input matInput placeholder="Enter Tenancy ID" [(ngModel)]="Tenancy_id">
+    </div>
+  </div>
+
+  <div style="display: flex; flex-direction: row; margin: 0 0 2%;">
+    <div class="inputA">
+      <span style=" font-weight:bold;">Tenancy Name :</span>
+    </div>
+    <div class="inputB">
+      <input matInput placeholder="Enter Tenancy Name" [(ngModel)]="tenancy_name">
+    </div>
+  </div>
+
+  <div style="display: flex; flex-direction: row; margin: 0 0 2%;">
+    <div class="inputA">
+      <span style="font-weight:bold;">Business Owner :</span>
+    </div>
+    <div class="inputB">
+      <input matInput placeholder="Enter name" [(ngModel)]="bo_name">
+    </div>
+  </div>
+
+  <div style="display: flex; flex-direction: row; margin: 0 0 2%;">
+    <div class="inputA">
+      <span style="font-weight:bold;">Business Owner Email :</span>
+    </div>
+    <div class="inputB">
+      <input matInput placeholder="Enter Mail ID " [(ngModel)]="bo_email">
+    </div>
+  </div>
+
+  <div style="display: flex; flex-direction: row; margin: 0 0 2%;">
+    <div class="inputA">
+      <span style="font-weight:bold;">Admin User ID :</span>
+    </div>
+    <div class="inputB">
+      <input matInput placeholder="Enter User ID " [(ngModel)]="admin_uid">
+    </div>
+  </div>
+
+  <div style="display: flex; flex-direction: row; margin: 0 0 2%;">
+    <div class="inputA">
+      <span style="font-weight:bold;">Tenancy Owner :</span>
+    </div>
+    <div class="inputB">
+      <input matInput placeholder="Enter name" [(ngModel)]="Tenancy_owner">
+    </div>
+  </div>
+
+  <div style="display: flex; flex-direction: row; margin: 0 0 2%;">
+    <div class="inputA">
+      <span style="font-weight:bold;">Tenancy Owner Email :</span>
+    </div>
+    <div class="inputB">
+      <input matInput placeholder="Enter Mail ID " [(ngModel)]="Tenancy_owner_email">
+    </div>
+  </div>
+
+  <div style="display: flex; flex-direction: row; margin: 0 0 2%;">
+    <div class="inputA">
+      <span style="font-weight:bold;">Home Region :</span>
+    </div>
+    <div class="inputB">
+      <input matInput placeholder="Enter Region Name " [(ngModel)]="Home_region">
+    </div>
+  </div>
+
+  <div style="display: flex; flex-direction: row; margin: 0 0 2%;">
+    <div class="inputA">
+      <span style="font-weight:bold;">Credit Limit :</span>
+    </div>
+    <div class="inputB">
+      <input matInput placeholder="Enter Limit " [(ngModel)]="Credit_limit">
+    </div>
+  </div>
+
+  <div style="display: flex; flex-direction: row; margin: 0 0 2%;">
+    <div class="inputA">
+      <span style="font-weight:bold;">Status :</span>
+    </div>
+    <div class="inputB">
+      <mat-select [(ngModel)]="tstatus" required >
+        <mat-option value="Active">Active</mat-option>
+        <mat-option value="Inactive">Inactive</mat-option>
+        <!--<mat-option value="Inactive >Inactive</mat-option>-->
+      </mat-select>
+    </div>
+  </div>
+
+  <div style="display: flex; flex-direction: row; margin: 0 0 2%;">
+      <div class="inputA">
+      </div>
+      <div style="flex: 7">
+          <button (click)="atonclick()" mat-button>ADD TENANCY</button>
+      </div>
+    </div>
+  
+
+  <div>
+  </div>
+</div>

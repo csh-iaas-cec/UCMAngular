@@ -1,0 +1,365 @@
+<p class="mainStepper">
+
+  <mat-horizontal-stepper labelPosition="bottom" #stepper>
+
+    <!-- <mat-card class="example-card"> -->
+    <mat-step>
+
+      <ng-template matStepLabel>General Info</ng-template>
+      <!-- <form class="example-form"> </form> -->
+      <div class="container">
+        <h3>Package name</h3>
+        <div class="example-container">
+
+          <mat-form-field style="width:88vh;">
+            <input matInput [(ngModel)]="packageName" required>
+            <!-- <mat-error *ngIf="name.invalid">{{getErrorMessage()}}</mat-error> -->
+          </mat-form-field>
+
+        </div>
+        <h3>Description</h3>
+
+        <div class="example-container">
+          <mat-form-field style="width:88vh;">
+            <input matInput [(ngModel)]="packageDescription" required>
+          </mat-form-field>
+        </div>
+        <h3>Owners's Email</h3>
+
+        <div class="example-container">
+
+          <!-- <mat-select required [(ngModel)]="region">
+              <mat-option value="us-asburn-1">us-asburn-1</mat-option>
+              <mat-option value="eu-frankfurt-1">eu-frankfurt-1</mat-option>
+              <mat-option value="us-phoenix-1">us-phoenix-1</mat-option>
+              <mat-option value="ca-toronto-1">ca-toronto-1</mat-option>
+            </mat-select> -->
+          <mat-form-field style="width:88vh;">
+            <input matInput [(ngModel)]="ownersemail" required [formControl]="emailFormControl">
+            <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+              Please enter a valid email address
+            </mat-error>
+            <mat-error *ngIf="emailFormControl.hasError('required')">
+              Email is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+
+
+        </div>
+
+      </div>
+
+      <div class="buttonC">
+        <!-- <button mat-button matStepperPrevious>Back</button> -->
+
+        <button mat-button matStepperNext>NEXT<mat-icon>keyboard_arrow_right</mat-icon></button>
+      </div>
+
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup">
+
+      <ng-template matStepLabel>Services</ng-template>
+      <h2 style="font-size: 18px;">Which Services would you like to use?</h2>
+      <div class="container">
+        <div class="checkbox">
+          <mat-checkbox [(ngModel)]="cichecked" [ngModelOptions]="{standalone: true}">Compute
+            Instance</mat-checkbox>
+          <!--(click)="main()"-->
+          <mat-checkbox [(ngModel)]="adwchecked" [ngModelOptions]="{standalone: true}">Autonomous
+            Data Warehouse</mat-checkbox>
+          <mat-checkbox [(ngModel)]="atpchecked" [ngModelOptions]="{standalone: true}">Autonomous Transaction Process
+          </mat-checkbox>
+          <mat-checkbox>Other Service Example</mat-checkbox>
+          <mat-checkbox>Service Example</mat-checkbox>
+        </div>
+      </div>
+      <div class="buttonC">
+        <button mat-button matStepperPrevious>
+          <mat-icon>keyboard_arrow_left</mat-icon>BACK
+        </button>
+        <button mat-button matStepperNext>NEXT<mat-icon>keyboard_arrow_right</mat-icon></button>
+      </div>
+    </mat-step>
+    <mat-step [stepControl]="thirdFormGroup" *ngIf="cichecked">
+      <!-- <form [formGroup]="thirdFormGroup"> -->
+      <ng-template matStepLabel>Customize</ng-template>
+      <div class="customcontainer">
+        <h4>Would you like to provide a custom script ?</h4>
+        <mat-radio-group layout="row">
+          <mat-radio-button value="1" (click)="csyes()">Yes</mat-radio-button>
+          <mat-radio-button value="2" (click)="csno()" checked="checked">No</mat-radio-button>
+        </mat-radio-group>
+      </div>
+      <div class="customtextbox" *ngIf="cschoice">
+
+        <h4>Custom Script </h4>
+        <div class="example-container">
+
+          <mat-form-field style="width:88vh;">
+            <input matInput [(ngModel)]="customscript" required>
+          </mat-form-field>
+        </div>
+
+      </div>
+      <div class="buttonC">
+        <button mat-button matStepperPrevious>
+          <mat-icon>keyboard_arrow_left</mat-icon>BACK
+        </button>
+        <button mat-button matStepperNext>NEXT</button>
+      </div>
+      <!-- </form> -->
+    </mat-step>
+    <mat-step [stepControl]="fourthFormGroup" *ngIf="cichecked || adwchecked">
+
+      <ng-template matStepLabel>Services Info</ng-template>
+
+      <h2 style="font-size: 18px;">Review and Edit</h2>
+      <div id="rande" class="container">
+        <div *ngIf="cichecked">
+          <h3>Compute Instance Details</h3>
+          <div class="rndenetwork">
+            <div class="contenDivInside">
+              <span style="flex:4">Instance Name</span>
+              <input style="flex:3" matInput value="Default_Compute_Instance" [(ngModel)]="computeInstanceName">
+            </div>
+            <mat-divider></mat-divider>
+            <div class="contenDivInside">
+              <span style="flex:4">Instance Shape</span>
+              <mat-form-field style="flex:3">
+                <mat-select [(ngModel)]="computeinstanceShape">
+                  <mat-option value="VMStandard2.1">VMStandard2.1</mat-option>
+                  <mat-option value="VMStandard2.2">VMStandard2.2</mat-option>
+                  <mat-option value="VMStandard2.4">VMStandard2.4</mat-option>
+                  <mat-option value="VMStandard2.6">VMStandard2.6</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <mat-divider></mat-divider>
+          </div>
+        </div>
+        <div *ngIf="adwchecked">
+          <h3>Autonomous Data Warehouse Details</h3>
+          <div class="rndenetwork">
+            <div class="contenDivInside">
+              <span style="flex:4">ADW Display Name</span>
+              <input style="flex:3" matInput value="Default_ADW" [(ngModel)]="adwDisplayName">
+            </div>
+            <mat-divider></mat-divider>
+            <div class="contenDivInside">
+              <span style="flex:4">CPU Count</span>
+              <input style="flex:3" matInput value="1" [(ngModel)]="adwcpucount">
+            </div>
+            <mat-divider></mat-divider>
+            <div class="contenDivInside">
+              <span style="flex:4">Storage Size</span>
+              <input style="flex:3" matInput value="1" [(ngModel)]="adwstoragesize">
+            </div>
+            <mat-divider></mat-divider>
+          </div>
+        </div>
+        <!-----ATP---->
+        <div *ngIf="atpchecked">
+          <h3>Autonomous Transaction Process</h3>
+          <div class="rndenetwork">
+            <div class="contenDivInside">
+              <span style="flex:4">ATP Display Name</span>
+              <input style="flex:3" matInput placeholder="Default_ATP" [(ngModel)]="atpdisplayname">
+            </div>
+            <mat-divider></mat-divider>
+            <div class="contenDivInside">
+              <span style="flex:4">CPU Count</span>
+              <input style="flex:3" matInput value="1" [(ngModel)]="atpcpucount">
+            </div>
+            <mat-divider></mat-divider>
+            <div class="contenDivInside">
+              <span style="flex:4">Storage Size</span>
+              <input style="flex:3" matInput value="1" [(ngModel)]="atpstoragesize">
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="buttonC">
+        <button mat-button matStepperPrevious>
+          <mat-icon>keyboard_arrow_left</mat-icon>BACK
+        </button>
+        <button mat-button matStepperNext>NEXT<mat-icon>keyboard_arrow_right</mat-icon></button>
+      </div>
+    </mat-step>
+    <mat-step [stepControl]="fifthFormGroup" *ngIf="cichecked ">
+
+      <ng-template matStepLabel>Network Info </ng-template>
+
+      <h2 style="font-size: 18px;">Review and Edit (Continued)</h2>
+      <div id="rande" class="container">
+        <div *ngIf="cichecked">
+          <h3>Compute Instance Details</h3>
+          <div class="rndenetwork">
+            <div class="contenDivInside">
+              <span style="flex:4">Virtual Cloud Network</span>
+              <input style="flex:3" matInput placeholder="Automatically Make a Virtual Cloud Network" [(ngModel)]="vcn">
+            </div>
+            <mat-divider></mat-divider>
+            <div class="contenDivInside">
+              <span style="flex:4">Subnet</span>
+              <input style="flex:3" matInput placeholder="Automatically Make a Subnet" [(ngModel)]="subnet">
+            </div>
+            <mat-divider></mat-divider>
+          </div>
+        </div>
+        <!-- <div *ngIf="adwchecked">
+            <h3>Autonomous Data Warehouse </h3>
+            <div class="rndenetwork">
+              <div style="display: flex; flex-direction: row;  margin: 0 0 2%;">
+                <span style="flex:3">Virtual Cloud Network</span> <input style="flex:7" matInput placeholder="No Need for Virtual Cloud Network"
+                  formControlName="fifthCtrl">
+              </div>
+              <mat-divider></mat-divider>
+              <div style="display: flex; flex-direction: row; margin: 2% 0 2% 0;">
+                <span style="flex:3">Subnet</span> <input style="flex:7" matInput placeholder="No Need for Subnet Subnet"
+                  formControlName="fifthCtrl">
+              </div>
+              <mat-divider></mat-divider>
+            </div>
+          </div> -->
+
+        <!-- <h3>Autonomous Transaction Process</h3>
+          <div class="rndenetwork"> -->
+        <!-- <mat-divider></mat-divider> -->
+        <!-- </div> -->
+      </div>
+      <div class="buttonC">
+        <button mat-button matStepperPrevious>
+          <mat-icon>keyboard_arrow_left</mat-icon>BACK
+        </button>
+        <button mat-button matStepperNext>NEXT<mat-icon>keyboard_arrow_right</mat-icon></button>
+      </div>
+
+    </mat-step>
+    <mat-step [stepControl]="sixthFormGroup" *ngIf="cichecked || adwchecked">
+
+      <ng-template matStepLabel>Generator</ng-template>
+      <h2 style="font-size: 18px;">Summary Of Choices</h2>
+      <div class="gencontainer">
+
+        <div class="CIinfo" *ngIf="cichecked">
+          <div>
+            <mat-icon class="redicon">done</mat-icon> <span class="selectedsvc">Compute Instance</span>
+          </div>
+          <div class="cichoices">
+            <div>
+              <mat-icon class="redicon">done</mat-icon> <span class="selectedsvc">Virtual Cloud Network</span>
+            </div>
+            <div>
+              <mat-icon class="redicon">done</mat-icon> <span class="selectedsvc">Subnet A</span>
+            </div>
+            <div>
+              <mat-icon class="redicon">done</mat-icon> <span class="selectedsvc">Subnet B</span>
+            </div>
+            <div>
+              <mat-icon class="redicon">done</mat-icon> <span class="selectedsvc">Internet Gateway</span>
+            </div>
+            <div>
+              <mat-icon class="redicon">done</mat-icon> <span class="selectedsvc">Route Table</span>
+            </div>
+            <div>
+              <mat-icon class="redicon">done</mat-icon> <span class="selectedsvc">Security Lists</span>
+            </div>
+            <div>
+              <mat-icon class="redicon">done</mat-icon> <span class="selectedsvc">DHCP Options</span>
+            </div>
+          </div>
+        </div>
+        <div class="ADWinfo" *ngIf="adwchecked">
+          <div>
+            <mat-icon class="redicon">done</mat-icon> <span class="selectedsvc">Autonomous Data Warehouse</span>
+          </div>
+          <div class="adwchoices">
+            <div>
+              <mat-icon class="redicon">done</mat-icon> <span class="selectedsvc">ETC</span>
+            </div>
+          </div>
+        </div>
+        <!-- <mat-form-field>
+          <input matInput placeholder="Address" formControlName="fourthCtrl" required>
+        </mat-form-field> -->
+      </div>
+      <div class="buttonC">
+        <button mat-button matStepperPrevious>
+          <mat-icon>keyboard_arrow_left</mat-icon>BACK
+        </button>
+        <button mat-button (click)="applyTerraform('zipup')" *ngIf="downloadbutton">{{downloadbuttontext}}</button>
+        <button mat-button *ngIf="downloadUrl" ><a [href]="zipfoldertodownload"  target="blank" (click)="downloadfolder()" style="text-decoration:none; color:white;">Click here to Download</a>
+        </button>
+        <!-- <div style="margin:13px;">
+          <div *ngIf="creatingzipfile" >Please wait until the file is being created...</div>
+
+        </div> -->
+
+        <button mat-button  (click)="confirmTerraform()" matStepperNext [(disabled)]="deploybutton">DEPLOY PACKAGE</button>
+        <!-- <button mat-button matStepperNext *ngIf="applyTerraormButton">APPLY TERRAFORM</button> -->
+      </div>
+
+    </mat-step>
+    <mat-step [stepControl]="seventhFormGroup" *ngIf="cichecked || adwchecked">
+      <ng-template matStepLabel>Tenancy Info</ng-template>
+      <div class="tinfo">
+        <h3>Tenant</h3>
+        <div class="borderedI">
+
+          <!-- <mat-form-field class="infotextfield"> -->
+          <input matInput value="" [(ngModel)]="tenant">
+          <!-- </mat-form-field> -->
+
+        </div>
+        <h3>Compartment</h3>
+        <div class="borderedI">
+
+          <!-- <mat-form-field class="infotextfield"> -->
+          <input matInput value="" [(ngModel)]="compartment">
+          <!-- </mat-form-field> -->
+
+        </div>
+        <h3>User</h3>
+        <div class="borderedI">
+
+          <!-- <mat-form-field class="infotextfield"> -->
+          <input matInput value="" [(ngModel)]="user">
+          <!-- </mat-form-field> -->
+
+        </div>
+        <h3>Fingerprint</h3>
+        <div class="borderedI">
+
+          <!-- <mat-form-field class="infotextfield"> -->
+          <input matInput value="" [(ngModel)]="fingerprint">
+          <!-- </mat-form-field> -->
+
+        </div>
+        <h3>Region</h3>
+        <div class="borderedI">
+
+          <!-- <mat-form-field class="infotextfield"> -->
+
+          <mat-select required [(ngModel)]="region">
+            <mat-option value="us-asburn-1">us-asburn-1</mat-option>
+            <mat-option value="eu-frankfurt-1">eu-frankfurt-1</mat-option>
+            <mat-option value="us-phoenix-1">us-phoenix-1</mat-option>
+            <mat-option value="ca-toronto-1">ca-toronto-1</mat-option>
+          </mat-select>
+          <!-- </mat-form-field> -->
+
+        </div>
+      </div>
+      <div class="buttonC">
+        <button mat-button matStepperPrevious>
+          <mat-icon>keyboard_arrow_left</mat-icon>BACK
+        </button>
+        <button mat-button (click)="applyTerraform('apply')">DEPLOY</button>
+        <button mat-button (click)="stepper.reset()">RESET</button>
+      </div>
+    </mat-step>
+
+    <!-- </mat-card> -->
+  </mat-horizontal-stepper>
+</p>

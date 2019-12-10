@@ -1,0 +1,57 @@
+.utcontainer{
+    .utformcontainer{
+        padding: 5px;
+    }
+    button {
+        background: #CB3B28;
+        margin: 0px;
+        color: white;
+        width: 150px;
+        }
+    .copybutton{
+        margin: 0px;
+        border: none;
+        background: transparent;
+        color: black;
+        width: auto;
+        cursor: pointer;
+        :focus{
+            border: none;
+            background-image: gray;
+        }
+    }
+}
+
+.inputA{
+    flex: 3;
+    padding: 10px;
+    ::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background{
+        background-color: #CB3B28;
+    }
+}
+
+.inputB{
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    flex: 7;
+    padding: 7px;
+    display: flex;
+    flex-direction: inherit;
+    ::ng-deep .mat-select {
+        display: inline-block;
+        width: 100% !important;
+        outline: 0;
+    }
+    input{
+        word-wrap: break-all;
+        text-overflow: ellipsis;
+        background: none;
+        border: none;
+        width: -webkit-fill-available;
+        font-size: 16px;
+    }
+    input:focus {
+        outline: none;
+        
+    }
+}

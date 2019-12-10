@@ -1,0 +1,45 @@
+
+<div class="content">
+  <div class="content-inside">
+      <mat-toolbar class="dash-toolbar">
+          <div> <img  style="width:140px;" src="assets/imgs/NATD_Logo.png"></div>
+         <!--  <div class="icons">
+             <mat-icon>person</mat-icon>
+              <mat-icon>notifications</mat-icon>
+          </div>-->
+      </mat-toolbar>
+      <mat-tab-group class="example-tabs-container">
+          <mat-tab label="HOME">
+               <app-home></app-home>
+          </mat-tab>
+          <mat-tab label="SOLUTIONS MARKETPLACE">
+             <app-solution-catalog></app-solution-catalog> 
+          </mat-tab>
+          <mat-tab label="SERVICES MARKETPLACE ">
+              <app-services-marketplace></app-services-marketplace>
+          </mat-tab>
+          <mat-tab label="REPORTS AND BILLING">
+              <app-reports-billing></app-reports-billing>
+          </mat-tab>
+          <mat-tab label="ADMINISTRATION">
+              <!-- <app-admin></app-admin> -->
+          </mat-tab>
+
+      </mat-tab-group>
+      
+  </div>
+
+</div>
+
+<footer class="footer">
+
+  <div class="footerDiv"> 
+      
+      NATD UCM Tentants Portal | Contact Us
+      <p> Powered by Oracle Cloud Solutions Hubs | &copy; Oracle Solution Engineering | Terms of Use and Privacy |
+          Confidential - Oracle Internal</p>
+  </div>
+</footer>
+
+
+<router-outlet></router-outlet>

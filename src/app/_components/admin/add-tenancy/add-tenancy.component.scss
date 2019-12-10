@@ -1,0 +1,28 @@
+.atcontainer{
+    .atformcontainer{
+        padding: 5px;
+    }
+    button {
+        background: #CB3B28;
+        margin: 0px;
+        color: white;
+        width: 150px;
+        }
+}
+
+.inputA{
+    flex: 3;
+    padding: 10px;
+}
+
+.inputB{
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    flex: 7;
+    padding: 10px;
+    ::ng-deep .mat-select {
+        display: inline-block;
+        width: 100% !important;
+        outline: 0;
+    }
+}

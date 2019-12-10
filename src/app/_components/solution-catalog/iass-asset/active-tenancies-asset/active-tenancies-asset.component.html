@@ -1,0 +1,189 @@
+<div style="margin-left:20px;">
+  <button mat-raised-button (click)="goBack()">
+    <mat-icon>keyboard_arrow_left</mat-icon>Go back
+  </button> IaaS Solutions > Dashboard
+</div>
+<div class="headerD">
+  <h4>Dashboard</h4>
+  <!-- <p>Oracle Enterprise Linux - Version 7.1  </p> -->
+
+  <div>
+    <mat-grid-list cols="4" gutterSize="15px" rowHeight="4:3" class="example-grid">
+
+
+
+      <mat-grid-tile (click)="openInstanceDetails('JD Edwards',jdeInstanceDetails)" (dblclick)="closeRequest()"
+        *ngIf="jdeInstance">
+
+        <mat-card class="example-card">
+          <mat-card-header>
+
+          </mat-card-header>
+          <img mat-card-image src="../../../assets/imgs/solution/JDE.png" matTooltip="Click here to request">
+          <mat-card-content>
+          
+          </mat-card-content>
+
+        </mat-card>
+
+      </mat-grid-tile>
+      <mat-grid-tile (click)="openInstanceDetails('ubuntu',ubuntuInstanceDetails)" (dblclick)="closeRequest()" *ngIf="ubuntuInstance">
+
+        <mat-card class="example-card">
+          <mat-card-header>
+
+          </mat-card-header>
+          <img mat-card-image src="../../../assets/imgs/solution/Ubuntu.png" matTooltip="Click here to request">
+          <mat-card-content>
+           
+          </mat-card-content>
+
+        </mat-card>
+
+      </mat-grid-tile>
+      <mat-grid-tile (click)="openInstanceDetails('Linux',linuxInstanceDetails)" (dblclick)="closeRequest()" *ngIf="linuxInstance">
+
+        <mat-card class="example-card" style="--mywidth : 75px">
+          <mat-card-header>
+
+          </mat-card-header>
+          <img mat-card-image src="../../../assets/imgs/solution/Linux.png" matTooltip="Click here to request">
+          <mat-card-content>
+         
+          </mat-card-content>
+
+        </mat-card>
+
+      </mat-grid-tile>
+      <mat-grid-tile (click)="openInstanceDetails('windows',windowsInstanceDetails)" (dblclick)="closeRequest()" *ngIf="windowsInstance">
+
+        <mat-card class="example-card">
+          <mat-card-header>
+
+          </mat-card-header>
+          <img mat-card-image src="../../../assets/imgs/solution/Windows.png" matTooltip="Click here to request">
+          <mat-card-content>
+          
+          </mat-card-content>
+
+        </mat-card>
+      </mat-grid-tile>
+      <mat-grid-tile (click)="openInstanceDetails('oke',okeInstanceDetails)" (dblclick)="closeRequest()" *ngIf="okeInstance">
+
+        <mat-card class="example-card">
+          <mat-card-header>
+
+          </mat-card-header>
+          <img mat-card-image src="../../../assets/imgs/solution/oracle-oke.png" matTooltip="Click here to request">
+          <mat-card-content>
+          
+          </mat-card-content>
+
+        </mat-card>
+      </mat-grid-tile>
+
+
+    </mat-grid-list>
+    <!-- <mat-grid-list cols="1" gutterSize="15px" rowHeight="1:1" class="example-grid">
+           <mat-grid-tile (click)="openRequest('siebel')" (dblclick)="closeRequest()"> -->
+    <div class="dashcard" *ngIf="showInstanceDetails">
+      <mat-card class="example-card" style=" text-align: start; width: 100%; margin: auto;" ngDefaultControl>
+        <mat-card-header>
+          Details
+        </mat-card-header>
+        <mat-card-content style="display:flex;" >
+          <div class="detailscard">
+              <span style="justify-content: center;display: flex; font-size: 14px;font-weight: bold;border-bottom: 1px solid lightgray; padding: 2px;">Instance </span>
+            <div class="dashboard_data"  >
+              <label style="flex:1">Instance Name</label>
+              <span style="flex:2"> {{instance_Name}}</span>
+            </div>
+            <!-- <div class="dashboard_data" >
+              <label style="flex:1">Status</label>
+              <span style="flex:2"> {{status}}</span>
+            </div> -->
+            <div class="dashboard_data" *ngIf="os">
+              <label style="flex:1">Operating System</label>
+              <span style="flex:2"> {{Id}}</span>
+            </div>
+            <div class="dashboard_data">
+              <label style="flex:1">Shape</label>
+              <span style="flex:2"> {{shape}}</span>
+            </div>
+            <div class="dashboard_data">
+              <label style="flex:1">Image</label>
+              <span style="flex:2"> {{image}}</span>
+            </div>
+            <!-- <div class="dashboard_data">
+              <label style="flex:1">OCPU</label>
+              <span style="flex:2"> {{OCPU}}</span>
+            </div> -->
+            <!-- <div class="dashboard_data">
+              <label style="flex:1">Memory</label>
+              <span style="flex:2"> {{memory}}</span>
+            </div> -->
+            <!-- <div class="dashboard_data" >
+              <label style="flex:1">OMC Status</label>
+              <span style="flex:2"> {{OMCStatus}}</span>
+            </div> -->
+          </div>
+          <div class="detailscard">
+              <span style="justify-content: center;display: flex; font-size: 14px;font-weight: bold;border-bottom: 1px solid lightgray; padding: 2px;">Network </span>
+              <div class="dashboard_data">
+                <label style="flex:1">Public IP</label>
+                <span style="flex:2"> {{publicIP}}</span>
+              </div>
+              <div class="dashboard_data" >
+                <label style="flex:1">Private IP</label>
+                <span style="flex:2"> {{privateIP}}</span>
+              </div>
+              <!-- <div class="dashboard_data" >
+                <label style="flex:1"> Region</label>
+                <span style="flex:2"> {{region}}</span>
+              </div> -->
+              <!-- <div class="dashboard_data">
+                <label style="flex:1">VCN</label>
+                <span style="flex:2"> {{VCN}}</span>
+              </div> -->
+              <!-- <div class="dashboard_data">
+                <label style="flex:1">Subnet CIDR</label>
+                <span style="flex:2"> {{subnetCIDR}}</span>
+              </div> -->
+              <div class="dashboard_data">
+                <label style="flex:1">Availability Domain</label>
+                <span style="flex:2"> {{AvailabilityDomain}}</span>
+              </div>
+            </div>
+            <div class="detailscard">
+              <span style="justify-content: center;display: flex; font-size: 14px;font-weight: bold;border-bottom: 1px solid lightgray; padding: 2px;">Storage </span>
+                <div class="dashboard_data">
+                  <label style="flex:1">Root Volume</label>
+                  <span style="flex:2"> -</span>
+                </div>
+                <div class="dashboard_data">
+                  <label style="flex:1">Root Volume Size</label>
+                  <span style="flex:2"> -</span>
+                </div>
+                <div class="dashboard_data">
+                  <label style="flex:1"> Attached Volume</label>
+                  <span style="flex:2"> -</span>
+                </div>
+                <div class="dashboard_data">
+                  <label style="flex:1">Mount Point</label>
+                  <span style="flex:2"> -</span>
+                </div>
+                <div class="dashboard_data">
+                  <label style="flex:1">Attached Volume Size</label>
+                  <span style="flex:2"> -</span>
+                </div>
+                <div class="dashboard_data">
+                  <label style="flex:1">Availability Domain</label>
+                  <span style="flex:2"> -</span>
+                </div>
+              </div>
+        </mat-card-content>
+
+      </mat-card>
+    </div>
+  </div>
+</div>

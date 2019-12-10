@@ -1,0 +1,144 @@
+
+<div style="width: 100%; display: flex; flex-direction: row-reverse;">
+  <div class="example-form-field">
+      <input matInput type="search" placeholder="Search" name="name" [(ngModel)]="name">
+      <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="value=''" >
+        <mat-icon>search</mat-icon>
+      </button>
+    </div>
+    <div>
+        <button mat-raised-button (click)="opendashboard()" >Dashboard
+          </button>
+    </div>
+   
+</div>
+
+<div>
+  <mat-grid-list cols="4" gutterSize="15px" rowHeight="4:3" class="example-grid">
+
+      <mat-grid-tile  (dblclick)="closeRequest()" *ngFor="let item of list | imagefilterPipe: name ">
+    
+          <mat-card class="example-card" (click)="openRequest(name)">
+            <mat-card-header>
+      
+            </mat-card-header>
+            <img mat-card-image  [src]="item.imgsrc"  matTooltip="Click here to request" >  
+             <mat-card-content>
+                 {{item.value}}
+            </mat-card-content>
+      
+          </mat-card>
+      
+        </mat-grid-tile>
+        <mat-grid-tile (click)="openRequest('ubuntu')" (dblclick)="closeRequest()">
+        
+          <mat-card class="example-card">
+            <mat-card-header>
+      
+            </mat-card-header>
+            <img mat-card-image src="../../../assets/imgs/solution/Ubuntu.png"  matTooltip="Click here to request">
+            <mat-card-content>
+              UBUNTU
+            </mat-card-content>
+      
+          </mat-card>
+        </mat-grid-tile>
+        <mat-grid-tile (click)="openRequest('linux')" (dblclick)="closeRequest()">
+      
+          <mat-card class="example-card" style="--mywidth : 75px">
+            <mat-card-header>
+      
+            </mat-card-header>
+            <img mat-card-image src="../../../assets/imgs/solution/Linux.png"  matTooltip="Click here to request">
+            <mat-card-content>
+  ORACLE LINUX
+            </mat-card-content>
+      
+          </mat-card>
+        </mat-grid-tile>
+        <mat-grid-tile (click)="openRequest('windows')" (dblclick)="closeRequest()">
+      
+          <mat-card class="example-card">
+            <mat-card-header>
+      
+            </mat-card-header>
+            <img mat-card-image src="../../../assets/imgs/solution/Windows.png"  matTooltip="Click here to request">
+            <mat-card-content>
+              WINDOWS SERVER
+            </mat-card-content>
+      
+          </mat-card>
+        </mat-grid-tile>
+        <mat-grid-tile (click)="openRequest('oke')" (dblclick)="closeRequest()">
+      
+          <mat-card class="example-card" style="--mywidth : 165px">
+            <mat-card-header>
+      
+            </mat-card-header>
+            <img mat-card-image src="../../../assets/imgs/solution/oracle-oke.png" style="width:90px"  matTooltip="Click here to request">
+            <mat-card-content>
+              ORACLE KUBERNETES ENGINE
+            </mat-card-content>
+      
+          </mat-card>
+        </mat-grid-tile>
+  
+
+        <mat-grid-tile (click)="openRequest('jde')" (dblclick)="closeRequest()">
+    
+            <mat-card class="example-card">
+              <mat-card-header>
+        
+              </mat-card-header>
+              <img mat-card-image src="../../../assets/imgs/solution/JDE.png"   matTooltip="Click here to request">
+              <mat-card-content>
+                INFRA FOR JD EDWARDS - ONE CLICK
+              </mat-card-content>
+        
+            </mat-card>
+        
+          </mat-grid-tile>
+          <mat-grid-tile (click)="openRequest('ebs')" (dblclick)="closeRequest()">
+        
+            <mat-card class="example-card grayedOut">
+              <mat-card-header>
+        
+              </mat-card-header>
+              <img mat-card-image src="../../../assets/imgs/solution/EBS.png"  matTooltip="Click here to request">
+              <mat-card-content>
+                  INFRA FOR E BUSINESS SUITE - ONE CLICK
+              </mat-card-content>
+        
+            </mat-card>
+        
+          </mat-grid-tile>
+          <mat-grid-tile (click)="openRequest('psoft')" (dblclick)="closeRequest()" >
+        
+            <mat-card class="example-card grayedOut" style="--mywidth : 75px">
+              <mat-card-header>
+        
+              </mat-card-header>
+              <img mat-card-image src="../../../assets/imgs/solution/PeopleSoft.png"  matTooltip="Click here to request">
+              <mat-card-content>
+                  INFRA FOR PEOPLESOFT - ONE CLICK
+              </mat-card-content>
+        
+            </mat-card>
+        
+          </mat-grid-tile>
+          <mat-grid-tile (click)="openRequest('siebel')" (dblclick)="closeRequest()">
+        
+            <mat-card class="example-card grayedOut">
+              <mat-card-header>
+        
+              </mat-card-header>
+              <img mat-card-image src="../../../assets/imgs/solution/Sibel.png"  matTooltip="Click here to request">
+              <mat-card-content>
+                  INFRA FOR SIEBEL - ONE CLICK
+              </mat-card-content>
+        
+            </mat-card>
+          </mat-grid-tile>
+          
+     </mat-grid-list>
+</div>

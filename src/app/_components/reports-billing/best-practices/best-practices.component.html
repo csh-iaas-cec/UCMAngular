@@ -1,0 +1,255 @@
+<div class="cardD">
+  <!-- <mat-card class="full-width-card">
+ 
+    <mat-form-field class="selector">
+      <mat-select [(ngModel)]="reportname" placeholder="Select report date">
+        <mat-option *ngFor="let report of reports" [value]="report.value">
+          {{report.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button class="submitB" mat-raised-button (click)="getTenancyDetails()"> SUBMIT</button>
+  </mat-card> -->
+  <div class="selector">
+    <mat-select [(ngModel)]="tenancyname" placeholder="Select Tenancy"
+      (selectionChange)="selectchangetenancy($event.value)">
+      <mat-option *ngFor="let tenance of tenancies" [value]="tenance.value">
+        {{tenance.name}}
+      </mat-option>
+    </mat-select>
+  </div>
+</div>
+
+
+
+<div class="centerD">
+
+
+
+  <mat-card class="example-card">
+    <mat-card-header>
+      IAM
+    </mat-card-header>
+    <mat-card-content>
+      <div class="mainDiv">
+        <div class="firstTwoDiv">
+          <div class="keyDiv" (click)="openViewReportIAM(secuityList.iam_security[0])">View Report </div>
+        </div>
+        <div class="firstTwoDiv">
+          <div class="keyDiv">Download (excel)</div>
+        </div>
+        <div class="firstTwoDiv">
+          <div class="keyDiv">Download (pdf)</div>
+        </div>
+      </div>
+    </mat-card-content>
+
+  </mat-card>
+  <mat-card class="example-card ">
+    <mat-card-header>
+      Network
+    </mat-card-header>
+    <mat-card-content>
+      <div class="mainDiv">
+        <div class="firstTwoDiv">
+          <div class="keyDiv" (click)="openViewReportSecurity(secuityList.security[0])">View Report </div>
+        </div>
+        <div class="firstTwoDiv">
+          <div class="keyDiv">Download (excel)</div>
+        </div>
+        <div class="firstTwoDiv">
+          <div class="keyDiv">Download (pdf)</div>
+        </div>
+      </div>
+    </mat-card-content>
+
+  </mat-card>
+
+  <mat-card class="example-card">
+    <mat-card-header>
+      Compute
+    </mat-card-header>
+    <mat-card-content>
+      <div class="mainDiv">
+        <div class="firstTwoDiv">
+          <div class="keyDiv" (click)="openViewReportCompute(secuityList.compute_security[0])">View Report</div>
+        </div>
+        <div class="firstTwoDiv">
+          <div class="keyDiv">Download (excel)</div>
+          <div class="valueDiv" (click)="openTenancyDetails('bootvolume')">{{comput_boot_count}}</div>
+        </div>
+        <div class="firstTwoDiv">
+          <div class="keyDiv">Download (pdf)</div>
+          <div class="valueDiv" (click)="openTenancyDetails('blockvolume')">{{compute_block_volume}}</div>
+        </div>
+      </div>
+    </mat-card-content>
+
+  </mat-card>
+
+  <mat-card class="example-card grayedOut">
+    <mat-card-header>
+      Storage
+    </mat-card-header>
+    <mat-card-content>
+      <div class="mainDiv">
+        <div class="firstTwoDiv">
+          <div class="keyDiv">View Report </div>
+          <div class="valueDiv" (click)="openTenancyDetails('virtualMachine')">{{compute_vm}}</div>
+        </div>
+        <div class="firstTwoDiv">
+          <div class="keyDiv">Download (excel)</div>
+          <div class="valueDiv" (click)="openTenancyDetails('bootvolume')">{{comput_boot_count}}</div>
+        </div>
+        <div class="firstTwoDiv">
+          <div class="keyDiv">Download (pdf)</div>
+          <div class="valueDiv" (click)="openTenancyDetails('blockvolume')">{{compute_block_volume}}</div>
+        </div>
+      </div>
+    </mat-card-content>
+
+  </mat-card>
+
+</div>
+
+<div class="mainD" *ngIf="matTressNetworkisActive">
+  <mat-accordion>
+    <div *ngFor="let data of network_data | keyvalue">
+      <div class="dataTable">
+        <mat-expansion-panel (opened)="open_network_reports(data.value)" (closed)="open_network_reports('')">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              {{data.key}}
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+            <ng-container matColumnDef="vcn_name">
+              <th mat-header-cell *matHeaderCellDef> VCN NAME </th>
+              <td mat-cell *matCellDef="let element"> {{element.vcn_name}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="subnet_name">
+              <th mat-header-cell *matHeaderCellDef> Subnet NAME </th>
+              <td mat-cell *matCellDef="let element"> {{element.subnet_name}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="sls_name">
+              <th mat-header-cell *matHeaderCellDef> Security List NAME </th>
+              <td mat-cell *matCellDef="let element"> {{element.sls_name}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="compartment_name">
+              <th mat-header-cell *matHeaderCellDef> Compartment NAME </th>
+              <td mat-cell *matCellDef="let element"> {{element.compartment_name}} </td>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="no_of_rules">
+              <th mat-header-cell *matHeaderCellDef> No. of Rules </th>
+              <td mat-cell *matCellDef="let element"> {{element.no_of_rules}} </td>
+            </ng-container>
+
+
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+
+        </mat-expansion-panel>
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+
+      </div>
+    </div>
+  </mat-accordion>
+</div>
+
+<div class="mainD" *ngIf="matTressIAMActive">
+
+  <mat-accordion>
+    <div *ngFor="let data of iam_data | keyvalue">
+      <div class="dataTable">
+        <mat-expansion-panel (opened)="open_iam_reports(data.value)">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              {{data.key}}
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef> User Name </th>
+              <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="user_id">
+              <th mat-header-cell *matHeaderCellDef> REGION </th>
+              <td mat-cell *matCellDef="let element"> {{element.user_id}} </td>
+            </ng-container>
+
+
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+          
+
+        </mat-expansion-panel>
+      </div>
+    </div>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+  </mat-accordion>
+
+</div>
+
+<div class="mainD" *ngIf="matTressComputeActive">
+
+  <mat-accordion>
+    <div *ngFor="let data of compute_data | keyvalue">
+      <div class="dataTable">
+        <mat-expansion-panel (opened)="open_compute_reports(data.value)">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              {{data.key}}
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+            <ng-container matColumnDef="vcn_name">
+              <th mat-header-cell *matHeaderCellDef> VCN NAME </th>
+              <td mat-cell *matCellDef="let element"> {{element.vcn_name}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="subnet_name">
+              <th mat-header-cell *matHeaderCellDef> Subnet NAME </th>
+              <td mat-cell *matCellDef="let element"> {{element.subnet_name}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="sls_name">
+              <th mat-header-cell *matHeaderCellDef> Security List NAME </th>
+              <td mat-cell *matCellDef="let element"> {{element.sls_name}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="compartment_name">
+              <th mat-header-cell *matHeaderCellDef> Compartment NAME </th>
+              <td mat-cell *matCellDef="let element"> {{element.compartment_name}} </td>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="instance_name">
+              <th mat-header-cell *matHeaderCellDef> Instance </th>
+              <td mat-cell *matCellDef="let element"> {{element.instance_name}} </td>
+            </ng-container>
+
+
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+          <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+
+        </mat-expansion-panel>
+      </div>
+    </div>
+  </mat-accordion>
+
+</div>

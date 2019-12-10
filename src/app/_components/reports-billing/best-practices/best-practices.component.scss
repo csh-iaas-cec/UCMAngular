@@ -1,0 +1,108 @@
+.mainD{
+    margin: 20px;
+}
+
+
+
+
+.centerD{
+    display: flex;
+    margin: 30px;
+    justify-content: center;
+}
+
+.example-card{
+    width: calc(100%/4);
+    height: 80px;
+    margin: 12px;
+    box-shadow: 1px -1px 3px 0px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 3px 0 rgba(0,0,0,.12);  
+    ::ng-deep .mat-card-header {
+        display: flex;
+        flex-direction: row;
+        text-align: center;
+        justify-content: center;
+        font-size: 13px;
+        font-weight: 600;
+        text-decoration: underline;
+    }
+    ::ng-deep .mat-card-content {
+        display: block;
+        margin-bottom: 16px;
+        border-top: 1px solid lightgray;
+        margin-top: 8px;
+    }
+    .mainDiv{
+        display: flex;
+        font-size: 12px;
+        margin-top: 10px;
+    }
+    .firstTwoDiv{
+        width: calc(100% /3);
+        margin-left: 5px;
+    }
+    .keyDiv{
+        justify-content: center;
+        text-align: center;
+        overflow-wrap: break-word;
+        cursor: pointer;
+    }
+    .valueDiv{
+        justify-content: center;
+        text-align: center;
+        margin-top: 10px;
+        color: darkorange;
+        cursor: pointer;
+    }
+    ::ng-deep.mat-card-header-text {
+         margin: 0px;
+    }
+
+}
+
+
+.cardD{
+    width: 25%;
+    border: 1px solid lightgray;
+    margin: 2% 2% 0 38%;
+}
+
+.selector{
+    padding:5%;
+}
+
+.grayedOut{
+    opacity: 0.6;
+    background: #eae8e8;
+}
+
+.dataTable {
+    margin-top: 20px;
+    table{
+        width: 100%;
+        tr.mat-header-row {
+            height: 56px;
+            background: #DE561B;
+        }
+        td.mat-cell {
+            padding: 5px;
+            padding-left: 10px;
+            border-right-width: 1px;
+            border-right-style: solid;
+            border-right-color: rgba(0,0,0,.12);
+            font-size: 13px;
+        }
+        th.mat-header-cell{
+            padding: 5px;
+            border-right-width: 1px;
+            border-right-style: solid;
+            border-right-color: rgba(0,0,0,.12);
+            color: white;
+            font-size: 15px;
+            text-align: center;
+        }
+        td, th {
+            width: 15%;
+          }
+    } 
+ 
+}

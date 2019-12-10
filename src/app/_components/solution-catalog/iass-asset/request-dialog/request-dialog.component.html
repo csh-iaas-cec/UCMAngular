@@ -1,0 +1,166 @@
+<mat-toolbar class="containerHeader">{{data.pageTitle}}</mat-toolbar>
+
+<div *ngIf="confirmed">
+  <!-- <mat-toolbar class = "containerHeader">{{data.pageTitle}}</mat-toolbar> -->
+
+  <div class="example-container">
+    <div class="textMain">
+
+      The solution provisions compute instance & DBAAS in a new network on OCI.
+    </div>
+    <div class="linedText">
+      <h2><span> Mandatory input</span></h2>
+
+    </div>
+    <mat-form-field>
+      <mat-select placeholder="Tenancy" [(ngModel)]="tenancyname" (selectionChange)="selectedtenancydata($event.value)">
+        <mat-option *ngFor="let tenance of tenancies" [value]="tenance.value">
+          {{tenance.name}}
+        </mat-option>
+      </mat-select>
+
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select placeholder="Region" [(ngModel)]="region" (selectionChange)="selectedregiondata($event.value)">
+        <mat-option *ngFor="let reg of uniqregion" [value]="reg">
+          {{reg}}
+        </mat-option>
+        <!-- <mat-option value="us-ashburn-1">Ashburn</mat-option>
+                <mat-option value="us-phoenix-1">Phoenix</mat-option>
+                <mat-option value="uk-london-1">London</mat-option>
+                <mat-option value="eu-frankfurt-1">Frankfurt</mat-option> -->
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select placeholder="Compartment" [(ngModel)]="compartment" (selectionChange)="selectedcmpt()">
+        <mat-option *ngFor="let cmpt of uniqcmpt" [value]="cmpt">
+          {{cmpt}}
+        </mat-option>
+      </mat-select>
+
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select placeholder="VCN" [(ngModel)]="vcn" (selectionChange)="selectedvcndata($event.value)">
+        <mat-option *ngFor="let vcns of uniqformvcn" [value]="vcns">
+          {{vcns}}
+        </mat-option>
+      </mat-select>
+
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select placeholder="AD" [(ngModel)]="AD" (selectionChange)="selectedaddata()">
+        <mat-option *ngFor="let ads of uniqad" [value]="ads">
+          {{ads}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select placeholder="Subnet" [(ngModel)]="subnet" (selectionChange)="selectedsubnet()">
+        <mat-option *ngFor="let sbn of formsubnetonvcn" [value]="sbn">
+          {{sbn}}
+        </mat-option>
+      </mat-select>
+
+    </mat-form-field>
+
+
+
+    <mat-form-field>
+      <mat-select placeholder="Instance Shape" [(ngModel)]="shape">
+        <mat-option value="VM.Standard1.1">VM.Standard1.1</mat-option>
+        <mat-option value="VM.Standard1.2">VM.Standard1.2</mat-option>
+        <mat-option value="VM.Standard2.1">VM.Standard2.1</mat-option>
+        <mat-option value="VM.Standard2.2">VM.Standard2.2</mat-option>
+        <mat-option value="VM.Standard2.4">VM.Standard2.4</mat-option>
+        <mat-option value="VM.Standard.E2.1">VM.Standard.E2.1</mat-option>
+        <mat-option value="VM.Standard.E2.2">VM.Standard.E2.2</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div *ngIf="tagspresent">
+      <div class="linedText">
+        <h2><span> TAGS </span></h2>
+
+      </div>
+      <div style="display: flex; flex-direction: row; ">
+        <div class="inputA">
+          <span>owner.chargeback</span>
+        </div>
+        <div class="inputB">
+          <input [(ngModel)]="owner_chargeback">
+        </div>
+      </div>
+      <div style="display: flex; flex-direction: row; ">
+        <div class="inputA">
+          <span>owner.team</span>
+        </div>
+        <div class="inputB">
+          <input [(ngModel)]="owner_team">
+        </div>
+      </div>
+      <div style="display: flex; flex-direction: row; ">
+        <div class="inputA">
+          <span>owner.type</span>
+        </div>
+        <div class="inputB">
+          <input [(ngModel)]="owner_type">
+        </div>
+      </div>
+      <div style="display: flex; flex-direction: row; ">
+        <div class="inputA">
+          <span>owner.uptime</span>
+        </div>
+        <div class="inputB">
+          <!-- <input placeholder=" " [(ngModel)]="owner_uptime" > -->
+          <mat-form-field style="    width: 100%; height: 2px; margin-top: -15px; background: transparent;">
+            <mat-select [(ngModel)]="owner_uptime">
+              <mat-option value="2">2</mat-option>
+              <mat-option value="4">4</mat-option>
+              <mat-option value="8">8</mat-option>
+              <mat-option value="24">24</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="uploadpresent">
+        <div class="linedText">
+            <h2><span> Upload SSH key </span></h2>
+          </div>
+          <div [fileUploadInputFor]="fileUploadQueue" class="upload-drop-zone">
+              Just drag and drop files here
+          </div>
+           
+           
+          <div style="width: 500px">
+              <mat-file-upload-queue #fileUploadQueue
+                  [fileAlias]="'file'"
+                  [httpUrl]="httpURL" >
+              
+                  <mat-file-upload [file]="file" [id]="i" *ngFor="let file of fileUploadQueue.files; let i = index"></mat-file-upload>
+              </mat-file-upload-queue>
+          </div>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button (click)="onNoClick('No')">Cancel</button>
+      <button mat-raised-button (click)="onYesClick('Yes')">Order</button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="confirmationDialog" class="example-container">
+
+  <h1 mat-dialog-title>Confirm deployment</h1>
+
+  <div mat-dialog-content>
+    <p>Your account will start getting charged for this order, after you click confirm.</p>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-raised-button (click)="onNoClick('No')">Cancel</button>
+    <button mat-raised-button (click)="runscripts()">Confirm</button>
+  </div>
+</div>
