@@ -14,7 +14,7 @@ export class CloudPortalService {
 
   constructor(public http: HttpClient) {
     console.log('Hello TerraformPvrProvider Provider');
-    this.localhost_URL = 'http://129.213.18.246:3200';
+    this.localhost_URL = 'http://localhost:3200';
    }
    runScriptsinit(instance):  Observable<any>  {
     return this.http.post(`${this.localhost_URL}/api/RunScriptsInit`, instance);
