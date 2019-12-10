@@ -89,7 +89,7 @@ export class InventoryComponent implements  AfterViewInit {
   isLoadingResults = true;
   isRateLimitReached = false;
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
 
 
   constructor(private cloudservice: CloudPortalService) { }

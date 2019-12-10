@@ -59,7 +59,7 @@ export class BestPracticesComponent implements AfterViewInit {
   network_data: InterfaceNetwork[] = [];
   compute_data: InterfaceCompute[] = [];
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
   constructor(private cloudservice: CloudPortalService, private spinner: NgxSpinnerService) {
 
   }
