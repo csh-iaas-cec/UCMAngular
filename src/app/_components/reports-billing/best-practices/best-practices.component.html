@@ -12,17 +12,26 @@
     <button class="submitB" mat-raised-button (click)="getTenancyDetails()"> SUBMIT</button>
   </mat-card> -->
   <div class="selector">
+<<<<<<< HEAD
     <mat-select [(ngModel)]="tenancyname" placeholder="Select Tenancy"
       (selectionChange)="selectchangetenancy($event.value)">
       <mat-option *ngFor="let tenance of tenancies" [value]="tenance.value">
         {{tenance.name}}
       </mat-option>
     </mat-select>
+=======
+      <mat-select [(ngModel)]="tenancyname" placeholder="Select Tenancy" (selectionChange)="selectchangetenancy($event.value)" >
+        <mat-option *ngFor="let tenance of tenancies" [value]="tenance.value" >
+          {{tenance.name}}
+        </mat-option>
+      </mat-select>
+>>>>>>> 2891e135bbcb28a3c31067887b4aef66f2310e4a
   </div>
 </div>
 
 
 
+<<<<<<< HEAD
 <div class="centerD">
 
 
@@ -54,6 +63,39 @@
       <div class="mainDiv">
         <div class="firstTwoDiv">
           <div class="keyDiv" (click)="openViewReportSecurity(secuityList.security[0])">View Report </div>
+=======
+<div class="centerD" >
+
+
+
+<mat-card class="example-card">
+  <mat-card-header>
+    IAM
+  </mat-card-header>
+  <mat-card-content>
+    <div class="mainDiv">
+      <div class="firstTwoDiv">
+        <div class="keyDiv" (click)="openViewReportIAM(secuityList.iam_security)">View Report </div>
+      </div>
+      <div class="firstTwoDiv">
+        <div class="keyDiv">Download (excel)</div>
+      </div>
+      <div class="firstTwoDiv">
+        <div class="keyDiv">Download (pdf)</div>
+      </div>
+    </div>
+  </mat-card-content>
+
+</mat-card>
+<mat-card class="example-card ">
+  <mat-card-header>
+      Network
+  </mat-card-header>
+  <mat-card-content>
+      <div class="mainDiv">
+        <div class="firstTwoDiv">
+          <div class="keyDiv" (click)="openViewReportSecurity(secuityList.security)">View Report </div>
+>>>>>>> 2891e135bbcb28a3c31067887b4aef66f2310e4a
         </div>
         <div class="firstTwoDiv">
           <div class="keyDiv">Download (excel)</div>
@@ -64,6 +106,7 @@
       </div>
     </mat-card-content>
 
+<<<<<<< HEAD
   </mat-card>
 
   <mat-card class="example-card">
@@ -252,4 +295,119 @@
     </div>
   </mat-accordion>
 
+=======
+</mat-card>
+<mat-card class="example-card grayedOut">
+  <mat-card-header>
+      Storage
+  </mat-card-header>
+  <mat-card-content>
+      <div class="mainDiv">
+          <div class="firstTwoDiv">
+            <div class="keyDiv">View Report </div>
+            <div class="valueDiv" (click)="openTenancyDetails('virtualMachine')">{{compute_vm}}</div>
+          </div>
+          <div class="firstTwoDiv">
+            <div class="keyDiv">Download (excel)</div>
+            <div class="valueDiv" (click)="openTenancyDetails('bootvolume')">{{comput_boot_count}}</div>
+          </div>
+          <div class="firstTwoDiv">
+            <div class="keyDiv">Download (pdf)</div>
+            <div class="valueDiv" (click)="openTenancyDetails('blockvolume')">{{compute_block_volume}}</div>
+          </div>
+        </div>
+  </mat-card-content>
+
+</mat-card>
+<mat-card class="example-card grayedOut">
+    <mat-card-header>
+        Compute
+    </mat-card-header>
+    <mat-card-content>
+        <div class="mainDiv">
+            <div class="firstTwoDiv">
+              <div class="keyDiv">View Report </div>
+              <div class="valueDiv" (click)="openTenancyDetails('virtualMachine')">{{compute_vm}}</div>
+            </div>
+            <div class="firstTwoDiv">
+              <div class="keyDiv">Download (excel)</div>
+              <div class="valueDiv" (click)="openTenancyDetails('bootvolume')">{{comput_boot_count}}</div>
+            </div>
+            <div class="firstTwoDiv">
+              <div class="keyDiv">Download (pdf)</div>
+              <div class="valueDiv" (click)="openTenancyDetails('blockvolume')">{{compute_block_volume}}</div>
+            </div>
+          </div>
+    </mat-card-content>
+
+  </mat-card>
+</div>
+
+<div class="mainD" *ngIf="matTressNetworkisActive">
+<mat-tree [dataSource]="dataSource" [treeControl]="treeControl" >
+  <!-- This is the tree node template for leaf nodes -->
+  <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding
+ 
+>
+    <!-- use a disabled button to provide padding for tree leaf -->
+    <button mat-icon-button disabled></button>
+     {{node.name}}
+  </mat-tree-node>
+  <!-- This is the tree node template for expandable nodes -->
+  <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding  
+  [ngClass]="{treeColorRed1: node.name == 'Security list exposed to Public Internet' ||  node.name == 'Security list allowing All Protocols' || node.name == 'Security list having all ports open'  }">
+    <button mat-icon-button matTreeNodeToggle
+            [attr.aria-label]="'toggle ' + node.name">
+      <mat-icon class="mat-icon-rtl-mirror">
+        {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+      </mat-icon>
+    </button>
+   {{node.name}}
+  </mat-tree-node>
+</mat-tree>
+
+<mat-tree [dataSource]="dataSource1" [treeControl]="treeControl" class="treeColorYellow">
+  <!-- This is the tree node template for leaf nodes -->
+  <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding 
+  [ngClass]="">
+    <!-- use a disabled button to provide padding for tree leaf -->
+    <button mat-icon-button disabled></button>
+    {{node.name}}
+  </mat-tree-node>
+  <!-- This is the tree node template for expandable nodes -->
+  <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding class="treeNodewhite">
+    <button mat-icon-button matTreeNodeToggle
+            [attr.aria-label]="'toggle ' + node.name">
+      <mat-icon class="mat-icon-rtl-mirror">
+        {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+      </mat-icon>
+    </button>
+    {{node.name}}
+  </mat-tree-node>
+</mat-tree>
+</div>
+<div class="mainD" *ngIf="matTressIAMActive">
+
+<mat-tree [dataSource]="dataSourceiam" [treeControl]="treeControl"  >
+    <!-- This is the tree node template for leaf nodes -->
+    <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding
+   
+>
+      <!-- use a disabled button to provide padding for tree leaf -->
+      <button mat-icon-button disabled></button>
+       {{node.name}}
+    </mat-tree-node>
+    <!-- This is the tree node template for expandable nodes -->
+    <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding  
+   >
+      <button mat-icon-button matTreeNodeToggle
+              [attr.aria-label]="'toggle ' + node.name">
+        <mat-icon class="mat-icon-rtl-mirror">
+          {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+        </mat-icon>
+      </button>
+     {{node.name}}
+    </mat-tree-node>
+  </mat-tree>
+>>>>>>> 2891e135bbcb28a3c31067887b4aef66f2310e4a
 </div>
