@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { CloudPortalService } from '../../../_services/cloud-portal.service';
-import { MatPaginator, MatTableDataSource } from '@angular/material';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 
 export interface PeriodicElementVirtualMachine {
   index: any;
@@ -17,7 +18,7 @@ export interface PeriodicElementVirtualMachine {
 }
 export interface PeriodicElementVolumes {
   volume_type: string;
-  size: number;
+  sizeGB: number;
   instance_id: number;
   backup_policy: string;
   attached_instance: string;
@@ -31,7 +32,9 @@ export interface PeriodicElementVCN {
 
 export interface PeriodicElementSubnetAndOthers {
   resource_name: string;
-  resource_type: number;
+  subnet_cidr: string;
+  subnet_ad: string;
+  public_or_private: string;
 }
 export interface PeriodicElementObjectStorage {
   bucket_name : string;
@@ -88,7 +91,7 @@ export class InventoryComponent implements  AfterViewInit {
   isLoadingResults = true;
   isRateLimitReached = false;
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
 
 
   constructor(private cloudservice: CloudPortalService) { }
@@ -159,7 +162,7 @@ export class InventoryComponent implements  AfterViewInit {
     }
     this.cloudservice.getInstanceTable(instanceParams)
       .subscribe(tabledata => {
-        console.log(tabledata[0])
+        console.log(tabledata[0]);
 
         if (tablename == 'virtualMachine') {
           this.displayedColumns = ['index', 'instance_name', 'region', 'availability_domain', 'image', 'private_ip', 'public_ip', 'shape', 'vcn_name'];
@@ -172,8 +175,9 @@ export class InventoryComponent implements  AfterViewInit {
 
         }
         else if (tablename == 'bootvolume' || tablename == 'blockvolume') {
-          this.displayedColumns = ['volume_type', 'size', 'instance_id', 'backup_policy', 'attached_instance'];
+          this.displayedColumns = ['volume_type', 'sizeGB', 'instance_id', 'backup_policy', 'attached_instance'];
           this.ELEMENT_DATA_VOLUME = tabledata;
+          
           this.dataSource = new MatTableDataSource<PeriodicElementVolumes>(this.ELEMENT_DATA_VOLUME);
           this.dataSource.paginator = this.paginator;
           this.tablevolume = true;
@@ -191,7 +195,7 @@ export class InventoryComponent implements  AfterViewInit {
 
         }
         else if (tablename == 'subnet' || tablename == 'others') {
-          this.displayedColumns = ['resource_name', 'resource_type'];
+          this.displayedColumns = ['resource_name', 'subnet_cidr', 'subnet_ad', 'public_or_private'];
           this.ELEMENT_DATA_SUBNETANDOTHERS = tabledata;
           this.dataSource = new MatTableDataSource<PeriodicElementSubnetAndOthers>(this.ELEMENT_DATA_SUBNETANDOTHERS);
           console.log('datsource', this.dataSource)

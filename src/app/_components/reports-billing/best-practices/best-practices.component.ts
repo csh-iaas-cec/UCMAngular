@@ -3,7 +3,8 @@ import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree'
 import { FlatTreeControl } from '@angular/cdk/tree';
 import { CloudPortalService } from '../../../_services/cloud-portal.service';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { MatPaginator, MatTableDataSource } from '@angular/material';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 
 
 
@@ -55,7 +56,7 @@ export class BestPracticesComponent implements AfterViewInit {
   network_data: InterfaceNetwork[] = [];
   compute_data: InterfaceCompute[] = [];
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
   constructor(private cloudservice: CloudPortalService, private spinner: NgxSpinnerService) {
 
   }
